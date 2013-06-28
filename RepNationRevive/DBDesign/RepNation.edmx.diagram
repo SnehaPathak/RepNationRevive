@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8e8a1d75f544f87aeeabb6ca7a3aa98" Name="Diagram1" ZoomLevel="97" DisplayType="true" >
+        <EntityTypeShape EntityType="RepNation.Campaign" Width="2.125" PointX="10.125" PointY="11" />
+        <EntityTypeShape EntityType="RepNation.Rep" Width="2.125" PointX="15.5" PointY="11.125" />
+        <EntityTypeShape EntityType="RepNation.Business" Width="1.5" PointX="20.25" PointY="10.625" />
+        <EntityTypeShape EntityType="RepNation.CampaignRep" Width="1.5" PointX="13.125" PointY="11.75" />
+        <AssociationConnector Association="RepNation.PortalRepRep" />
+        <AssociationConnector Association="RepNation.CampaignRepCampaign" />
+        <EntityTypeShape EntityType="RepNation.JobPost" Width="1.875" PointX="7.375" PointY="11.25" />
+        <EntityTypeShape EntityType="RepNation.Image" Width="1.5" PointX="5.125" PointY="13.75" />
+        <AssociationConnector Association="RepNation.PortalJobImage" />
+        <EntityTypeShape EntityType="RepNation.RecruitmentBusinessPreference" PointX="20.25" PointY="19.125" Width="2.125" />
+        <EntityTypeShape EntityType="RepNation.EmailTemplate" PointX="5.5" PointY="4.75" Width="2" />
+        <EntityTypeShape EntityType="RepNation.CampaignEmail" Width="2.125" PointX="8.875" PointY="6.25" />
+        <EntityTypeShape EntityType="RepNation.CampaignQuestion" Width="2.375" PointX="12.125" PointY="5.875" />
+        <EntityTypeShape EntityType="RepNation.CampaignQuestionChoice" Width="2.625" PointX="15.125" PointY="5.875" />
+        <EntityTypeShape EntityType="RepNation.RepCampaignQuestionChoice" Width="2.75" PointX="18.375" PointY="7.375" />
+        <AssociationConnector Association="RepNation.RepJobQuestionChoiceJobQuestionChoice" />
+        <AssociationConnector Association="RepNation.JobEmailEmailTemplate" />
+        <EntityTypeShape EntityType="RepNation.RecruitmentDocumentConfig" Width="2.5" PointX="5.875" PointY="21.375" />
+        <EntityTypeShape EntityType="RepNation.Address" Width="1.5" PointX="18.25" PointY="18" />
+        <EntityTypeShape EntityType="RepNation.RepAddress" Width="1.5" PointX="15" PointY="18" />
+        <AssociationConnector Association="RepNation.RepAddressAddress" />
+        <EntityTypeShape EntityType="RepNation.Recruitment" Width="3" PointX="9.625" PointY="16.625" />
+        <EntityTypeShape EntityType="RepNation.RecruitmentAgeGroupPreference" Width="3" PointX="5.875" PointY="18.125" />
+        <AssociationConnector Association="RepNation.RepAddressRep" />
+        <EntityTypeShape EntityType="RepNation.Country" Width="1.5" PointX="2.625" PointY="12" />
+        <EntityTypeShape EntityType="RepNation.State" Width="1.5" PointX="2.25" PointY="9.875" />
+        <AssociationConnector Association="RepNation.PortalRecruitment" />
+        <AssociationConnector Association="RepNation.RecruitmentRecruitmentAgeGroupPreference" />
+        <EntityTypeShape EntityType="RepNation.Rep_Calc" Width="2" PointX="18.625" PointY="15.25" />
+        <AssociationConnector Association="RepNation.JobBusinessPreferenceBusiness" />
+        <EntityTypeShape EntityType="RepNation.RepOrganization" Width="1.5" PointX="18.125" PointY="11.75" />
+        <AssociationConnector Association="RepNation.RepRepBusiness" />
+        <AssociationConnector Association="RepNation.RepBusinessBusiness1" />
+        <AssociationConnector Association="RepNation.RepRepBusiness_calc" />
+        <AssociationConnector Association="RepNation.CampaignEmailCampaign" />
+        <AssociationConnector Association="RepNation.RecruitmentRecruitmentBusinessPreference" />
+        <AssociationConnector Association="RepNation.RecruitmentRecruitmentDocumentConfig" />
+        <AssociationConnector Association="RepNation.RepRepRecruitmentQuestionChoice" />
+        <AssociationConnector Association="RepNation.CampaignJobPost" />
+        <AssociationConnector Association="RepNation.CampaignQuestionCampaignQuestionChoice" />
+        <AssociationConnector Association="RepNation.CampaignCampaignQuestion" />
+        <EntityTypeShape EntityType="RepNation.RepScreeningScoreCalculated" Width="2.625" PointX="21.125" PointY="5.125" />
+        <AssociationConnector Association="RepNation.RepScreeningScoreCalculatedCampaign" />
+        <AssociationConnector Association="RepNation.RepScreeningScoreCalculatedRep" />
+        <EntityTypeShape EntityType="RepNation.File" Width="1.5" PointX="24.25" PointY="14.625" />
+        <AssociationConnector Association="RepNation.RepFile" />
+        <EntityTypeShape EntityType="RepNation.HighSchool" Width="1.5" PointX="23.5" PointY="9.25" />
+        <EntityTypeShape EntityType="RepNation.College" Width="1.5" PointX="24.5" PointY="12.375" />
+        <EntityTypeShape EntityType="RepNation.Company" Width="1.5" PointX="26.5" PointY="10" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

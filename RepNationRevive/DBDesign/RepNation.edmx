@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="RepNation.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="RepNationTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RepNation" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="RepNationContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Campaigns" EntityType="RepNation.Campaign" />
+          <EntitySet Name="Reps" EntityType="RepNation.Rep" />
+          <EntitySet Name="Businesses" EntityType="RepNation.Business" />
+          <EntitySet Name="CampaignReps" EntityType="RepNation.CampaignRep" />
+          <AssociationSet Name="PortalRepRep" Association="RepNation.PortalRepRep">
+            <End Role="PortalRep" EntitySet="CampaignReps" />
+            <End Role="Rep" EntitySet="Reps" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignRepCampaign" Association="RepNation.CampaignRepCampaign">
+            <End Role="CampaignRep" EntitySet="CampaignReps" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <EntitySet Name="JobPosts" EntityType="RepNation.JobPost" />
+          <EntitySet Name="Images" EntityType="RepNation.Image" />
+          <AssociationSet Name="PortalJobImage" Association="RepNation.PortalJobImage">
+            <End Role="PortalJob" EntitySet="JobPosts" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <EntitySet Name="RecruitmentBusinessPreferences" EntityType="RepNation.RecruitmentBusinessPreference" />
+          <EntitySet Name="EmailTemplates" EntityType="RepNation.EmailTemplate" />
+          <EntitySet Name="CampaignEmails" EntityType="RepNation.CampaignEmail" />
+          <EntitySet Name="CampaignQuestions" EntityType="RepNation.CampaignQuestion" />
+          <EntitySet Name="CampaignQuestionChoices" EntityType="RepNation.CampaignQuestionChoice" />
+          <EntitySet Name="RepCampaignQuestionChoices" EntityType="RepNation.RepCampaignQuestionChoice" />
+          <AssociationSet Name="RepJobQuestionChoiceJobQuestionChoice" Association="RepNation.RepJobQuestionChoiceJobQuestionChoice">
+            <End Role="RepJobQuestionChoice" EntitySet="RepCampaignQuestionChoices" />
+            <End Role="JobQuestionChoice" EntitySet="CampaignQuestionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="JobEmailEmailTemplate" Association="RepNation.JobEmailEmailTemplate">
+            <End EntitySet="CampaignEmails" Role="JobEmail" />
+            <End EntitySet="EmailTemplates" Role="EmailTemplate" />
+          </AssociationSet>
+          <EntitySet Name="RecruitmentDocumentConfigs" EntityType="RepNation.RecruitmentDocumentConfig" />
+          <EntitySet Name="Addresses" EntityType="RepNation.Address" />
+          <EntitySet Name="RepAddresses" EntityType="RepNation.RepAddress" />
+          <AssociationSet Name="RepAddressAddress" Association="RepNation.RepAddressAddress">
+            <End Role="RepAddress" EntitySet="RepAddresses" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <EntitySet Name="Recruitments" EntityType="RepNation.Recruitment" />
+          <EntitySet Name="RecruitmentAgeGroupPreferences" EntityType="RepNation.RecruitmentAgeGroupPreference" />
+          <AssociationSet Name="RepAddressRep" Association="RepNation.RepAddressRep">
+            <End Role="RepAddress" EntitySet="RepAddresses" />
+            <End Role="Rep" EntitySet="Reps" />
+          </AssociationSet>
+          <EntitySet Name="Countries" EntityType="RepNation.Country" />
+          <EntitySet Name="States" EntityType="RepNation.State" />
+          <AssociationSet Name="PortalRecruitment" Association="RepNation.PortalRecruitment">
+            <End Role="Portal" EntitySet="Campaigns" />
+            <End Role="Recruitment" EntitySet="Recruitments" />
+          </AssociationSet>
+          <AssociationSet Name="RecruitmentRecruitmentAgeGroupPreference" Association="RepNation.RecruitmentRecruitmentAgeGroupPreference">
+            <End Role="Recruitment" EntitySet="Recruitments" />
+            <End Role="RecruitmentAgeGroupPreference" EntitySet="RecruitmentAgeGroupPreferences" />
+          </AssociationSet>
+          <EntitySet Name="Rep_Calc" EntityType="RepNation.Rep_Calc" />
+          <AssociationSet Name="JobBusinessPreferenceBusiness" Association="RepNation.JobBusinessPreferenceBusiness">
+            <End Role="JobBusinessPreference" EntitySet="RecruitmentBusinessPreferences" />
+            <End Role="Business" EntitySet="Businesses" />
+          </AssociationSet>
+          <EntitySet Name="RepOrganizations" EntityType="RepNation.RepOrganization" />
+          <AssociationSet Name="RepRepBusiness" Association="RepNation.RepRepBusiness">
+            <End Role="Rep" EntitySet="Reps" />
+            <End Role="RepBusiness" EntitySet="RepOrganizations" />
+          </AssociationSet>
+          <AssociationSet Name="RepBusinessBusiness1" Association="RepNation.RepBusinessBusiness1">
+            <End Role="RepBusiness" EntitySet="RepOrganizations" />
+            <End Role="Business" EntitySet="Businesses" />
+          </AssociationSet>
+          <AssociationSet Name="RepRepBusiness_calc" Association="RepNation.RepRepBusiness_calc">
+            <End Role="Rep" EntitySet="Reps" />
+            <End Role="RepBusiness_calc" EntitySet="Rep_Calc" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignEmailCampaign" Association="RepNation.CampaignEmailCampaign">
+            <End Role="CampaignEmail" EntitySet="CampaignEmails" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="RecruitmentRecruitmentBusinessPreference" Association="RepNation.RecruitmentRecruitmentBusinessPreference">
+            <End Role="Recruitment" EntitySet="Recruitments" />
+            <End Role="RecruitmentBusinessPreference" EntitySet="RecruitmentBusinessPreferences" />
+          </AssociationSet>
+          <AssociationSet Name="RecruitmentRecruitmentDocumentConfig" Association="RepNation.RecruitmentRecruitmentDocumentConfig">
+            <End Role="Recruitment" EntitySet="Recruitments" />
+            <End Role="RecruitmentDocumentConfig" EntitySet="RecruitmentDocumentConfigs" />
+          </AssociationSet>
+          <AssociationSet Name="RepRepRecruitmentQuestionChoice" Association="RepNation.RepRepRecruitmentQuestionChoice">
+            <End Role="Rep" EntitySet="Reps" />
+            <End Role="RepRecruitmentQuestionChoice" EntitySet="RepCampaignQuestionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignJobPost" Association="RepNation.CampaignJobPost">
+            <End Role="Campaign" EntitySet="Campaigns" />
+            <End Role="JobPost" EntitySet="JobPosts" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignQuestionCampaignQuestionChoice" Association="RepNation.CampaignQuestionCampaignQuestionChoice">
+            <End Role="CampaignQuestion" EntitySet="CampaignQuestions" />
+            <End Role="CampaignQuestionChoice" EntitySet="CampaignQuestionChoices" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignCampaignQuestion" Association="RepNation.CampaignCampaignQuestion">
+            <End Role="Campaign" EntitySet="Campaigns" />
+            <End Role="CampaignQuestion" EntitySet="CampaignQuestions" />
+          </AssociationSet>
+          <EntitySet Name="RepScreeningScoreCalculateds" EntityType="RepNation.RepScreeningScoreCalculated" />
+          <AssociationSet Name="RepScreeningScoreCalculatedCampaign" Association="RepNation.RepScreeningScoreCalculatedCampaign">
+            <End Role="RepScreeningScoreCalculated" EntitySet="RepScreeningScoreCalculateds" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="RepScreeningScoreCalculatedRep" Association="RepNation.RepScreeningScoreCalculatedRep">
+            <End Role="RepScreeningScoreCalculated" EntitySet="RepScreeningScoreCalculateds" />
+            <End Role="Rep" EntitySet="Reps" />
+          </AssociationSet>
+          <EntitySet Name="Files" EntityType="RepNation.File" />
+          <AssociationSet Name="RepFile" Association="RepNation.RepFile">
+            <End Role="Rep" EntitySet="Reps" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <EntitySet Name="HighSchools" EntityType="RepNation.HighSchool" />
+          <EntitySet Name="Colleges" EntityType="RepNation.College" />
+          <EntitySet Name="Companies" EntityType="RepNation.Company" />
+        </EntityContainer>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignId" />
+          </Key>
+          <Property Type="Guid" Name="CampaignId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="DefaultJobPostId" Nullable="false" />
+          <Property Type="String" Name="InternalName" Nullable="false" />
+          <Property Type="String" Name="PublicName" Nullable="false" />
+          <Property Type="String" Name="HostUrl" Nullable="false" />
+          <Property Type="RepNation.CampaignType" Name="CampaignType" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <NavigationProperty Name="Recruitment" Relationship="RepNation.PortalRecruitment" FromRole="Portal" ToRole="Recruitment" />
+          <Property Type="Boolean" Name="IsPublic" Nullable="false" />
+          <Property Type="String" Name="RequireSSL" Nullable="false" />
+          <Property Type="String" Name="HasClientEULA" Nullable="false" />
+          <Property Type="String" Name="ClientEULAText" Nullable="false" />
+          <Property Type="DateTimeOffset" Name="StartDate" Nullable="true" />
+          <Property Type="DateTimeOffset" Name="EndDate" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="CampaignEmails" Relationship="RepNation.CampaignEmailCampaign" FromRole="Campaign" ToRole="CampaignEmail" />
+          <NavigationProperty Name="JobPosts" Relationship="RepNation.CampaignJobPost" FromRole="Campaign" ToRole="JobPost" />
+        </EntityType>
+        <EntityType Name="Rep">
+          <Key>
+            <PropertyRef Name="RepId" />
+          </Key>
+          <Property Type="Guid" Name="RepId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" />
+          <Property Type="String" Name="LastName" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="Guid" Name="StateId" Nullable="false" />
+          <Property Type="String" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Zip" Nullable="false" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" />
+          <Property Type="Boolean" Name="IsMale" Nullable="false" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+          <Property Type="String" Name="ResumeFileId" Nullable="false" />
+          <Property Type="RepNation.AgeGroupType" Name="AgeGroupType" Nullable="false" />
+          <Property Type="Boolean" Name="IsGlobal" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="RepAddresses" Relationship="RepNation.RepAddressRep" FromRole="Rep" ToRole="RepAddress" />
+          <NavigationProperty Name="RepBusinesses" Relationship="RepNation.RepRepBusiness" FromRole="Rep" ToRole="RepBusiness" />
+          <NavigationProperty Name="RepBusiness_calc" Relationship="RepNation.RepRepBusiness_calc" FromRole="Rep" ToRole="RepBusiness_calc" />
+          <NavigationProperty Name="File" Relationship="RepNation.RepFile" FromRole="Rep" ToRole="File" />
+          <Property Type="String" Name="Website" Nullable="false" />
+          <Property Type="String" Name="PhotoId" Nullable="false" />
+          <Property Type="String" Name="EducationLastCompleted" Nullable="false" />
+          <Property Type="RepNation.MaritalStatusType" Name="MaritalStatus" Nullable="false" />
+          <Property Type="Boolean" Name="LiveOnOrOffCampus" Nullable="false" />
+        </EntityType>
+        <EnumType Name="BusinessType">
+          <Member Name="HighSchool" Value="0" />
+          <Member Name="College" Value="1" />
+          <Member Name="Other" Value="2" />
+        </EnumType>
+        <EntityType Name="Business">
+          <Key>
+            <PropertyRef Name="BusinessId" />
+          </Key>
+          <Property Type="Guid" Name="BusinessId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="Guid" Name="StateId" Nullable="false" />
+          <Property Type="Guid" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Zip" Nullable="false" />
+          <Property Type="String" Name="Website" Nullable="false" />
+          <!--<Property Type="RepNation.BusinessType" Name="BusinessType" Nullable="false" />-->
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+        </EntityType>
+        <EnumType Name="Status">
+          <Member Name="InActive" Value="0" />
+          <Member Name="Active" Value="1" />
+          <Member Name="Approved" Value="2" />
+          <Member Name="Unapproved" Value="3" />
+        </EnumType>
+        <EntityType Name="CampaignRep">
+          <Key>
+            <PropertyRef Name="CampaignRepId" />
+          </Key>
+          <Property Type="Guid" Name="CampaignRepId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Guid" Name="CampaignId" Nullable="false" />
+          <Property Type="Guid" Name="RepId" Nullable="false" />
+          <Property Type="RepNation.CampaignRepStatus" Name="Status" Nullable="false" />
+          <Property Type="String" Name="DateLastContacted" Nullable="false" />
+          <Property Type="RepNation.OfferLetterStatus" Name="OfferLetterStatus" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="Rep" Relationship="RepNation.PortalRepRep" FromRole="PortalRep" ToRole="Rep" />
+          <NavigationProperty Name="Campaign" Relationship="RepNation.CampaignRepCampaign" FromRole="CampaignRep" ToRole="Campaign" />
+        </EntityType>
+        <Association Name="PortalRepRep">
+          <End Type="RepNation.CampaignRep" Role="PortalRep" Multiplicity="*" />
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Rep">
+              <PropertyRef Name="RepId" />
+            </Principal>
+            <Dependent Role="PortalRep">
+              <PropertyRef Name="RepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CampaignRepCampaign">
+          <End Type="RepNation.CampaignRep" Role="CampaignRep" Multiplicity="*" />
+          <End Type="RepNation.Campaign" Role="Campaign" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="CampaignRep">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JobPost">
+          <Key>
+            <PropertyRef Name="JobPostId" />
+          </Key>
+          <Property Type="Guid" Name="JobPostId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="CampaignId" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Headline" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="Detail" Nullable="false" />
+          <Property Type="String" Name="PromotionalLink" Nullable="false" />
+          <Property Type="Guid" Name="LogoImageId" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <Property Type="Boolean" Name="IsFeatured" Nullable="false" />
+          <Property Type="DateTime" Name="Deadline" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="Image" Relationship="RepNation.PortalJobImage" FromRole="PortalJob" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Type="Guid" Name="ImageId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Url" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+        </EntityType>
+        <Association Name="PortalJobImage">
+          <End Type="RepNation.JobPost" Role="PortalJob" Multiplicity="*" />
+          <End Type="RepNation.Image" Role="Image" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageId" />
+            </Principal>
+            <Dependent Role="PortalJob">
+              <PropertyRef Name="LogoImageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="AgeGroupType">
+          <Member Name="HighSchool" Value="0" />
+          <Member Name="College" Value="1" />
+          <Member Name="Professional" Value="2" />
+          <Member Name="Other" Value="3" />
+        </EnumType>
+        <EntityType Name="RecruitmentBusinessPreference">
+          <Key>
+            <PropertyRef Name="RecruitmentBusinessPreferenceId" />
+          </Key>
+          <Property Name="RecruitmentBusinessPreferenceId" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Guid" />
+          <Property Name="RecruitmentId" Nullable="false" Type="Guid" />
+          <Property Type="Guid" Name="BusinessId" Nullable="false" />
+          <Property Name="DateCreated" Nullable="false" Type="DateTime" />
+          <Property Name="CreatedBy" Nullable="false" Type="String" />
+          <Property Name="DateModified" Nullable="false" Type="DateTime" />
+          <Property Name="ModifiedBy" Nullable="false" Type="String" />
+          <NavigationProperty Name="Business" Relationship="RepNation.JobBusinessPreferenceBusiness" FromRole="JobBusinessPreference" ToRole="Business" />
+        </EntityType>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Nullable="false" annotation:StoreGeneratedPattern="None" Type="Guid" />
+          <Property Name="ShortName" Nullable="false" Type="String" />
+          <Property Name="From" Nullable="false" Type="String" />
+          <Property Name="To" Nullable="false" Type="String" />
+          <Property Name="Subject" Nullable="false" Type="String" />
+          <Property Name="Body" Nullable="false" Type="String" />
+          <Property Name="Attachment" Nullable="false" Type="String" />
+          <Property Name="Status" Nullable="false" Type="String" />
+          <Property Name="DateCreated" Nullable="false" Type="DateTime" />
+          <Property Name="CreatedBy" Nullable="false" Type="String" />
+          <Property Name="DateModified" Nullable="false" Type="DateTime" />
+          <Property Name="ModifiedBy" Nullable="false" Type="String" />
+        </EntityType>
+        <EntityType Name="CampaignEmail">
+          <Key>
+            <PropertyRef Name="CampaignEmailId" />
+          </Key>
+          <Property Type="Guid" Name="CampaignEmailId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Guid" Name="CampaignId" Nullable="false" />
+          <Property Type="Guid" Name="EmailTemplateId" Nullable="false" />
+          <Property Type="Guid" Name="LogoImageId" Nullable="true" />
+          <Property Type="Boolean" Name="IsRequired" Nullable="false" />
+          <Property Type="RepNation.JobEmailType" Name="EmailType" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="EmailTemplate" Relationship="RepNation.JobEmailEmailTemplate" FromRole="JobEmail" ToRole="EmailTemplate" />
+        </EntityType>
+        <EnumType Name="JobEmailType">
+          <Member Name="CampaignBlast" Value="0" />
+          <Member Name="Interview" Value="1" />
+          <Member Name="Offer" Value="2" />
+          <Member Name="Welcome" Value="3" />
+          <Member Name="Rejection" Value="4" />
+        </EnumType>
+        <EntityType Name="CampaignQuestion">
+          <Key>
+            <PropertyRef Name="CampaignQuestionId" />
+          </Key>
+          <Property Type="Guid" Name="CampaignQuestionId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Guid" Name="CampaignId" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="RepNation.CampaignQuestionType" Name="Type" Nullable="false" />
+          <Property Type="Boolean" Name="IsRequired" Nullable="false" />
+          <Property Type="Boolean" Name="IsSingleLine" Nullable="true" />
+          <Property Type="Int32" Name="EntryFieldNumber" Nullable="true" />
+          <Property Type="RepNation.CampaignQuestionValidationType" Name="ValidationType" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="Order" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="CampaignQuestionChoices" Relationship="RepNation.CampaignQuestionCampaignQuestionChoice" FromRole="CampaignQuestion" ToRole="CampaignQuestionChoice" />
+        </EntityType>
+        <EntityType Name="CampaignQuestionChoice">
+          <Key>
+            <PropertyRef Name="CampaignQuestionChoiceId" />
+          </Key>
+          <Property Type="Guid" Name="CampaignQuestionChoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="CampaignQuestionId" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="Int32" Name="Score" Nullable="false" />
+          <Property Type="Int32" Name="Order" Nullable="true" />
+        </EntityType>
+        <EntityType Name="RepCampaignQuestionChoice">
+          <Key>
+            <PropertyRef Name="RepCampaignQuestionChoiceId" />
+          </Key>
+          <Property Type="Guid" Name="RepCampaignQuestionChoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="RepId" Nullable="false" />
+          <Property Type="Guid" Name="CampaignQuestionChoiceId" Nullable="false" />
+          <Property Type="String" Name="Value" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+          <NavigationProperty Name="CampaignQuestionChoice" Relationship="RepNation.RepJobQuestionChoiceJobQuestionChoice" FromRole="RepJobQuestionChoice" ToRole="JobQuestionChoice" />
+        </EntityType>
+        <Association Name="RepJobQuestionChoiceJobQuestionChoice">
+          <End Type="RepNation.RepCampaignQuestionChoice" Role="RepJobQuestionChoice" Multiplicity="*" />
+          <End Type="RepNation.CampaignQuestionChoice" Role="JobQuestionChoice" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="JobQuestionChoice">
+              <PropertyRef Name="CampaignQuestionChoiceId" />
+            </Principal>
+            <Dependent Role="RepJobQuestionChoice">
+              <PropertyRef Name="CampaignQuestionChoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobEmailEmailTemplate">
+          <End Type="RepNation.CampaignEmail" Multiplicity="*" Role="JobEmail" />
+          <End Type="RepNation.EmailTemplate" Multiplicity="1" Role="EmailTemplate" />
+          <ReferentialConstraint>
+            <Principal Role="EmailTemplate">
+              <PropertyRef Name="EmailTemplateId" />
+            </Principal>
+            <Dependent Role="JobEmail">
+              <PropertyRef Name="EmailTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RecruitmentDocumentConfig">
+          <Key>
+            <PropertyRef Name="RecruitmentDocumentConfigId" />
+          </Key>
+          <Property Type="Guid" Name="RecruitmentDocumentConfigId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Guid" Name="RecruitmentId" Nullable="false" />
+          <Property Type="RepNation.RecruitmentDocumentType" Name="RecruitmentDocumentType" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="AdditionalMessage" Nullable="false" />
+          <Property Type="String" Name="AdditionalTerms" Nullable="false" />
+          <Property Type="Boolean" Name="RequireW2" Nullable="false" />
+        </EntityType>
+        <EnumType Name="RecruitmentDocumentType">
+          <Member Name="Interview" Value="0" />
+          <Member Name="Offer" Value="1" />
+          <Member Name="Welcome" Value="2" />
+          <Member Name="Rejection" Value="3" />
+        </EnumType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Type="Guid" Name="AddressId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="AddressLine1" Nullable="false" />
+          <Property Type="String" Name="AddressLine2" Nullable="true" />
+        </EntityType>
+        <EntityType Name="RepAddress">
+          <Key>
+            <PropertyRef Name="RepAddressId" />
+          </Key>
+          <Property Type="Guid" Name="RepAddressId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Address" Relationship="RepNation.RepAddressAddress" FromRole="RepAddress" ToRole="Address" />
+          <Property Type="Guid" Name="RepId" Nullable="false" />
+          <Property Type="String" Name="AddressId" Nullable="false" />
+          <Property Type="RepNation.AddressType" Name="AddressType" Nullable="false" />
+          <Property Type="Boolean" Name="IsPrimary" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+        </EntityType>
+        <Association Name="RepAddressAddress">
+          <End Type="RepNation.RepAddress" Role="RepAddress" Multiplicity="1" />
+          <End Type="RepNation.Address" Role="Address" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Recruitment">
+          <Key>
+            <PropertyRef Name="RecruitmentId" />
+          </Key>
+          <Property Type="Guid" Name="RecruitmentId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="PortalId" Nullable="false" />
+          <Property Type="RepNation.RecruitmentType" Name="Type" Nullable="false" />
+          <Property Type="Int32" Name="RepGoal" Nullable="false" />
+          <Property Type="Int32" Name="CampusGoal" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="false" />
+          <Property Type="RepNation.MaritalStatusType" Name="MaritalStatus" Nullable="false" />
+          <Property Type="Int32" Name="MinAge" Nullable="false" />
+          <Property Type="Int32" Name="MaxAge" Nullable="false" />
+          <Property Type="Int32" Name="MinChildren" Nullable="false" />
+          <Property Type="RepNation.RecruitmentLocationPreferenceType" Name="LocationPreferenceType" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="Guid" Name="StateId" Nullable="false" />
+          <Property Type="Boolean" Name="ExcludeLowRatedRep" Nullable="false" />
+          <Property Type="Boolean" Name="RequireExperiencedRep" Nullable="false" />
+          <Property Type="String" Name="RegionRadius" Nullable="false" />
+          <Property Type="String" Name="RegionZip" Nullable="false" />
+          <Property Type="Int32" Name="MinFacebookFriends" Nullable="false" />
+          <Property Type="Int32" Name="MaxFacebookFriends" Nullable="false" />
+          <Property Type="Int32" Name="MinTwitterFollowers" Nullable="false" />
+          <Property Type="Int32" Name="MaxTwitterFollowers" Nullable="false" />
+          <NavigationProperty Name="RecruitmentAgeGroupPreferences" Relationship="RepNation.RecruitmentRecruitmentAgeGroupPreference" FromRole="Recruitment" ToRole="RecruitmentAgeGroupPreference" />
+          <NavigationProperty Name="RecruitmentBusinessPreferences" Relationship="RepNation.RecruitmentRecruitmentBusinessPreference" FromRole="Recruitment" ToRole="RecruitmentBusinessPreference" />
+          <NavigationProperty Name="RecruitmentDocumentConfigs" Relationship="RepNation.RecruitmentRecruitmentDocumentConfig" FromRole="Recruitment" ToRole="RecruitmentDocumentConfig" />
+        </EntityType>
+        <EnumType Name="RecruitmentType">
+          <Member Name="RepNationRep" Value="0" />
+          <Member Name="NonRepNationRep" Value="1" />
+          <Member Name="Other" Value="2" />
+        </EnumType>
+        <EnumType Name="MaritalStatusType">
+          <Member Name="Married" Value="0" />
+          <Member Name="Single" Value="1" />
+        </EnumType>
+        <EnumType Name="RecruitmentLocationPreferenceType">
+          <Member Name="CityState" Value="0" />
+          <Member Name="Region" Value="1" />
+        </EnumType>
+        <EntityType Name="RecruitmentAgeGroupPreference">
+          <Key>
+            <PropertyRef Name="RecruitmentAgeGroupPreferenceId" />
+          </Key>
+          <Property Type="Int32" Name="RecruitmentAgeGroupPreferenceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="RecruitmentId" Nullable="false" />
+          <Property Type="RepNation.AgeGroupType" Name="AgeGroupType" Nullable="false" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
+        </EntityType>
+        <Association Name="RepAddressRep">
+          <End Type="RepNation.RepAddress" Role="RepAddress" Multiplicity="*" />
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Type="Guid" Name="CountryId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Type="Guid" Name="StateId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Guid" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <Association Name="PortalRecruitment">
+          <End Type="RepNation.Campaign" Role="Portal" Multiplicity="1" />
+          <End Type="RepNation.Recruitment" Role="Recruitment" Multiplicity="1" />
+        </Association>
+        <Association Name="RecruitmentRecruitmentAgeGroupPreference">
+          <End Type="RepNation.Recruitment" Role="Recruitment" Multiplicity="1" />
+          <End Type="RepNation.RecruitmentAgeGroupPreference" Role="RecruitmentAgeGroupPreference" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Rep_Calc">
+          <Key>
+            <PropertyRef Name="RepBusinessCalcId" />
+          </Key>
+          <Property Type="Int32" Name="RepBusinessCalcId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="RepId" Nullable="false" />
+          <Property Type="Guid" Name="BusinessId" Nullable="false" />
+          <!--<Property Type="BusinessType" Name="BusinessType" Nullable="false" />-->
+          <Property Type="String" Name="BusinessName" Nullable="false" />
+          <Property Type="String" Name="ShortName" Nullable="false" />
+        </EntityType>
+        <Association Name="JobBusinessPreferenceBusiness">
+          <End Type="RepNation.RecruitmentBusinessPreference" Role="JobBusinessPreference" Multiplicity="*" />
+          <End Type="RepNation.Business" Role="Business" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessId" />
+            </Principal>
+            <Dependent Role="JobBusinessPreference">
+              <PropertyRef Name="BusinessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RepOrganization">
+          <Key>
+            <PropertyRef Name="RepOrganizationId" />
+          </Key>
+          <Property Type="Guid" Name="RepOrganizationId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="Guid" Name="RepId" Nullable="false" />
+          <Property Type="Guid" Name="BusinessId" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" />
+          <Property Type="DateTime" Name="ChangeDate" Nullable="true" />
+          <NavigationProperty Name="Business" Relationship="RepNation.RepBusinessBusiness1" FromRole="RepBusiness" ToRole="Business" />
+          <Property Type="String" Name="HighSchoolId" Nullable="false" />
+          <Property Type="String" Name="CollegeId" Nullable="false" />
+          <Property Type="String" Name="CompanyId" Nullable="false" />
+          <Property Type="String" Name="HighSchoolGraduationSeason" Nullable="false" />
+          <Property Type="String" Name="HighSchoolGraduationYear" Nullable="false" />
+          <Property Type="String" Name="CollegeGraduationSeason" Nullable="false" />
+          <Property Type="String" Name="CollegeGraduationYear" Nullable="false" />
+          <Property Type="String" Name="MonthlyIncome" Nullable="false" />
+          <Property Type="String" Name="NoOfChildren" Nullable="false" />
+        </EntityType>
+        <Association Name="RepRepBusiness">
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+          <End Type="RepNation.RepOrganization" Role="RepBusiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rep">
+              <PropertyRef Name="RepId" />
+            </Principal>
+            <Dependent Role="RepBusiness">
+              <PropertyRef Name="RepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RepBusinessBusiness1">
+          <End Type="RepNation.RepOrganization" Role="RepBusiness" Multiplicity="*" />
+          <End Type="RepNation.Business" Role="Business" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="BusinessId" />
+            </Principal>
+            <Dependent Role="RepBusiness">
+              <PropertyRef Name="BusinessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RepRepBusiness_calc">
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+          <End Type="RepNation.Rep_Calc" Role="RepBusiness_calc" Multiplicity="1" />
+        </Association>
+        <Association Name="CampaignEmailCampaign">
+          <End Type="RepNation.CampaignEmail" Role="CampaignEmail" Multiplicity="*" />
+          <End Type="RepNation.Campaign" Role="Campaign" Multiplicity="1" />
+        </Association>
+        <Association Name="RecruitmentRecruitmentBusinessPreference">
+          <End Type="RepNation.Recruitment" Role="Recruitment" Multiplicity="1" />
+          <End Type="RepNation.RecruitmentBusinessPreference" Role="RecruitmentBusinessPreference" Multiplicity="*" />
+        </Association>
+        <Association Name="RecruitmentRecruitmentDocumentConfig">
+          <End Type="RepNation.Recruitment" Role="Recruitment" Multiplicity="1" />
+          <End Type="RepNation.RecruitmentDocumentConfig" Role="RecruitmentDocumentConfig" Multiplicity="*" />
+        </Association>
+        <Association Name="RepRepRecruitmentQuestionChoice">
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+          <End Type="RepNation.RepCampaignQuestionChoice" Role="RepRecruitmentQuestionChoice" Multiplicity="*" />
+        </Association>
+        <EnumType Name="CampaignType">
+          <Member Name="Unknown" Value="0" />
+        </EnumType>
+        <Association Name="CampaignJobPost">
+          <End Type="RepNation.Campaign" Role="Campaign" Multiplicity="1" />
+          <End Type="RepNation.JobPost" Role="JobPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="JobPost">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CampaignQuestionCampaignQuestionChoice">
+          <End Type="RepNation.CampaignQuestion" Role="CampaignQuestion" Multiplicity="1" />
+          <End Type="RepNation.CampaignQuestionChoice" Role="CampaignQuestionChoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CampaignQuestion">
+              <PropertyRef Name="CampaignQuestionId" />
+            </Principal>
+            <Dependent Role="CampaignQuestionChoice">
+              <PropertyRef Name="CampaignQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CampaignCampaignQuestion">
+          <End Type="RepNation.Campaign" Role="Campaign" Multiplicity="1" />
+          <End Type="RepNation.CampaignQuestion" Role="CampaignQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="CampaignQuestion">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="CampaignRepStatus" >
+          <Member Name="NotQualified" Value="0" />
+          <Member Name="Qualified" Value="1" />
+          <Member Name="Applied" Value="2" />
+          <Member Name="Interviewing" Value="3" />
+          <Member Name="Rejected" Value="4" />
+          <Member Name="Offered" Value="5" />
+          <Member Name="Admitted" Value="6" />
+          <Member Name="AwaitingResponse" Value="7" />
+          <Member Name="Other" Value="8" />
+        </EnumType>
+        <EntityType Name="RepScreeningScoreCalculated">
+          <Key>
+            <PropertyRef Name="RepScreeningScoreCalculatedId" />
+          </Key>
+          <Property Type="Guid" Name="RepScreeningScoreCalculatedId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="CampaignId" Nullable="false" />
+          <Property Type="Guid" Name="RepId" Nullable="false" />
+          <Property Type="Int32" Name="Score" Nullable="false" />
+        </EntityType>
+        <Association Name="RepScreeningScoreCalculatedCampaign">
+          <End Type="RepNation.RepScreeningScoreCalculated" Role="RepScreeningScoreCalculated" Multiplicity="*" />
+          <End Type="RepNation.Campaign" Role="Campaign" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignId" />
+            </Principal>
+            <Dependent Role="RepScreeningScoreCalculated">
+              <PropertyRef Name="CampaignId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RepScreeningScoreCalculatedRep">
+          <End Type="RepNation.RepScreeningScoreCalculated" Role="RepScreeningScoreCalculated" Multiplicity="*" />
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Rep">
+              <PropertyRef Name="RepId" />
+            </Principal>
+            <Dependent Role="RepScreeningScoreCalculated">
+              <PropertyRef Name="RepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Type="Guid" Name="FileId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" />
+        </EntityType>
+        <Association Name="RepFile">
+          <End Type="RepNation.Rep" Role="Rep" Multiplicity="1" />
+          <End Type="RepNation.File" Role="File" Multiplicity="1" />
+        </Association>
+        <EnumType Name="OfferLetterStatus" >
+          <Member Name="Viewed" Value="1" />
+          <Member Name="Completed" Value="2" />
+          <Member Name="Sent" Value="3" />
+          <Member Name="Unknown" Value="4" />
+        </EnumType>
+        <EnumType Name="CampaignQuestionType">
+          <Member Name="CheckBox" Value="1" />
+          <Member Name="RadioButton" Value="2" />
+          <Member Name="OpenEnded" Value="3" />
+        </EnumType>
+        <EnumType Name="CampaignQuestionValidationType" >
+          <Member Name="Date" Value="1" />
+          <Member Name="Email" Value="2" />
+          <Member Name="ZipCode" Value="3" />
+          <Member Name="Number" Value="0" />
+        </EnumType>
+        <EnumType Name="AddressType">
+          <Member Name="Mailing" Value="0" />
+          <Member Name="Shipping" Value="1" />
+          <Member Name="Billing" Value="2" />
+        </EnumType>
+        <EntityType Name="HighSchool">
+          <Key>
+            <PropertyRef Name="HighSchoolId" />
+          </Key>
+          <Property Type="Guid" Name="HighSchoolId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="Guid" Name="StateId" Nullable="false" />
+          <Property Type="Guid" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Zip" Nullable="false" />
+          <Property Type="String" Name="Website" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+        </EntityType>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="CollegeId" />
+          </Key>
+          <Property Type="Guid" Name="CollegeId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="Guid" Name="StateId" Nullable="false" />
+          <Property Type="Guid" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Zip" Nullable="false" />
+          <Property Type="String" Name="Website" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Type="Guid" Name="CompanyId" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="String" Name="City" Nullable="false" />
+          <Property Type="Guid" Name="StateId" Nullable="false" />
+          <Property Type="Guid" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Zip" Nullable="false" />
+          <Property Type="String" Name="Website" Nullable="false" />
+          <Property Type="String" Name="CompanySize" Nullable="false" />
+          <Property Type="RepNation.Status" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="DateModified" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" Nullable="false" />
+        </EntityType>
+        <EnumType Name="EducationLastCompleted">
+          <Member Name="Unknown" Value="0" />
+          <Member Name="ElementarySchool" Value="1" />
+          <Member Name="MiddleSchool" Value="2" />
+          <Member Name="HighSchool" Value="3" />
+          <Member Name="SomeCollege" Value="4" />
+          <Member Name="TwoYearCollege" Value="5" />
+          <Member Name="FourYearCollege" Value="6" />
+          <Member Name="Masters" Value="7" />
+          <Member Name="Doctorate" Value="8" />
+        </EnumType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="RepNation" />
+        <Alias Key="Target" Value="RepNation.Store" />
+        <EntityContainerMapping CdmEntityContainer="RepNationContainer" StorageEntityContainer="RepNationTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
