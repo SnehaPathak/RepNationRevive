@@ -538,8 +538,8 @@
             <PropertyRef Name="CountryId" />
           </Key>
           <Property Type="Guid" Name="CountryId" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Type="String" Name="Code" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="LongName" Nullable="false" />
+          <Property Type="String" Name="ShortName" Nullable="false" />
         </EntityType>
         <EntityType Name="State">
           <Key>

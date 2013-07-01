@@ -15,7 +15,7 @@ namespace RepNationRevive.DBDesign
     public partial class Country
     {
         public System.Guid CountryId { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public string LongName { get; set; }
+        public string ShortName { get; set; }
     }
 }

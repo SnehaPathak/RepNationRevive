@@ -165,6 +165,9 @@
     <Compile Include="DBDesign\Country.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBDesign\EducationLastCompleted.cs">
+      <DependentUpon>RepNation.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBDesign\EmailTemplate.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
@@ -181,6 +184,9 @@
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
     <Compile Include="DBDesign\JobPost.cs">
+      <DependentUpon>RepNation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBDesign\MaritalStatusType.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
     <Compile Include="DBDesign\OfferLetterStatus.cs">
@@ -207,16 +213,10 @@
     <Compile Include="DBDesign\RecruitmentType.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBDesign\RelationshipType.cs">
-      <DependentUpon>RepNation.tt</DependentUpon>
-    </Compile>
     <Compile Include="DBDesign\Rep.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
     <Compile Include="DBDesign\RepAddress.cs">
-      <DependentUpon>RepNation.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBDesign\RepBusiness.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
     <Compile Include="DBDesign\RepCampaignQuestionChoice.cs">
@@ -236,6 +236,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RepNation.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBDesign\RepOrganization.cs">
+      <DependentUpon>RepNation.tt</DependentUpon>
     </Compile>
     <Compile Include="DBDesign\RepScreeningScoreCalculated.cs">
       <DependentUpon>RepNation.tt</DependentUpon>
